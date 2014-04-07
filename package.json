@@ -1,0 +1,12 @@
+{
+  "name": "Tinder",
+  "version": "1.0.0",
+  "description": "Programmatically access the Tinder dating service API",
+  "main": "tinder.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": "",
+  "author": "akawry",
+  "license": "MIT"
+}
