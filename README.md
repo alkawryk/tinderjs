@@ -69,6 +69,14 @@
   
 * `callback` is called when the request completes 
 
+### .getHistory(callback)
+
+  Gets the complete history for the user (all matches, messages, blocks, etc.).
+  
+  NOTE: Old messages seem to not be returned after a certain threshold. Not yet sure what exactly that timeout is. The official client seems to get this update once when the app is installed then cache the results and only rely on the incremental updates
+
+* `callback` is called when the request completes 
+
 ### .updatePosition(longitude, latitude, callback)
 
   Updates your profile's geographic position

@@ -175,6 +175,23 @@ function TinderClient() {
   };
   
   /**
+   * Gets the entire history for the user (all matches, messages, blocks, etc.)
+   * 
+   * NOTE: Old messages seem to not be returned after a certain threshold. Not yet
+   * sure what exactly that timeout is. The official client seems to get this update
+   * once when the app is installed then cache the results and only rely on the 
+   * incremental updates
+   * @param {Function} callback the callback to invoke when the request completes
+   */
+  this.getHistory = function(callback) {
+    tinderPost('updates',
+      {
+        last_activity_date: ""
+      },
+      makeTinderCallback(callback));
+  };
+  
+  /**
    * Updates the position for this user 
    * @param {Number} lon the longitude
    * @param {Number} lat the latitutde
