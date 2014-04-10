@@ -9,6 +9,13 @@ var request = require('request');
  */
 function TinderClient() {
   var xAuthToken = null;
+  var lastActivity = new Date();
+  var _this = this;
+  
+  /**
+   * The current profile's user id
+   */
+  this.userId = null;
   
   /**
    * Helper for getting the request object 
@@ -145,6 +152,9 @@ function TinderClient() {
         facebook_token: fbToken
       },
       function(error, res, body) {
+        
+        _this.userId = body.user._id;
+        
         if (!error && body.token) {
           xAuthToken = body.token;
           callback();
@@ -169,9 +179,15 @@ function TinderClient() {
   this.getUpdates = function(callback) {
     tinderPost('updates',
       {
-        last_activity_date: new Date().toISOString()
+        last_activity_date: lastActivity.toISOString() 
       },
-      makeTinderCallback(callback));
+      makeTinderCallback(function(err, data){
+        lastActivity = new Date(data.last_activity_date);
+        
+        if (callback) {
+          callback(err, data);
+        }
+      }));
   };
   
   /**
