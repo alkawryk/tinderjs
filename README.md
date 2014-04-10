@@ -34,6 +34,10 @@
 * `fb token` is a facebook user access token. You would acquire this by having your user log in using your application 
 * `callback` is called when the request completes 
 
+### .userId
+
+  Once authorized, this property will be set the current profile's tinder user id. 
+
 ### .sendMessage(user id, message, callback)
 
   Sends a message to a user. 
