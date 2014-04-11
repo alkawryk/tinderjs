@@ -152,11 +152,9 @@ function TinderClient() {
         facebook_token: fbToken
       },
       function(error, res, body) {
-        
-        _this.userId = body.user._id;
-        
         if (!error && body.token) {
           xAuthToken = body.token;
+          _this.userId = body.user._id;
           callback();
         } else if (body.error){
           throw "Failed to authenticate: " + body.error
