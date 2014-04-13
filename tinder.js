@@ -146,10 +146,11 @@ function TinderClient() {
    * @param {String} fbToken the Facebook token. This will be obtained when authenticating the user
    * @param {Function} callback the callback to invoke when the request completes
    */
-  this.authorize = function(fbToken, callback) {
+  this.authorize = function(fbToken, fbId, callback) {
     tinderPost('auth',
       {
-        facebook_token: fbToken
+        facebook_token: fbToken,
+        facebook_id: fbId
       },
       function(error, res, body) {
         
