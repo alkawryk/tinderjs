@@ -17,6 +17,7 @@
     
     client.authorize(
       <fb user token>,
+      <fb user id>,
       function() {
         client.getRecommendations(10, function(error, data){
           console.log(data.results);
@@ -27,11 +28,12 @@
 
 ## Supported APIs
 
-### .authorize(fb token, callback)
+### .authorize(fb token, fb id, callback)
 
   Authorizes the `TinderClient`. You must call this before any other method.
   
 * `fb token` is a facebook user access token. You would acquire this by having your user log in using your application 
+* `fb id` is the id of the facebook user 
 * `callback` is called when the request completes 
 
 ### .userId
@@ -100,6 +102,7 @@
     
     client.authorize(
       <fb user token>,
+      <fb user id>,
       function() {
         client.getRecommendations(10, function(error, data){
           _.chain(data.results)
