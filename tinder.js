@@ -157,6 +157,7 @@ function TinderClient() {
         if (!error && body.token) {
           xAuthToken = body.token;
           _this.userId = body.user._id;
+          _this.defaults = body;
           callback();
         } else if (body.error){
           throw "Failed to authenticate: " + body.error
@@ -172,6 +173,15 @@ function TinderClient() {
     return xAuthToken != null;
   }
   
+  
+  /**
+   * Returns client information and globals
+   * Globals are used for interacting with tinder api limits
+   */
+  this.getDefaults = function() {
+    return _this.defaults;
+  }
+
   /**
    * Gets a list of new updates. This will be things like new messages, people who liked you, etc. 
    * @param {Function} callback the callback to invoke when the request completes
