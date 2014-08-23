@@ -27,14 +27,17 @@ function TinderClient() {
       url: TINDER_HOST + "/" + path,
       json: data
     };
+    
+    var headers = {
+        'User-Agent' : 'Tinder Android Version 2.2.3',
+        'os_version' : '16'
+    };
   
     if (xAuthToken) {
-      var headers = {
-        'X-Auth-Token' : xAuthToken
-      };
-      
-      options.headers = headers;
+        headers['X-Auth-Token'] = xAuthToken;
     }
+    
+    options.headers = headers;
     
     return options;
   };
