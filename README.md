@@ -36,6 +36,10 @@
 * `fb id` is the id of the facebook user 
 * `callback` is called when the request completes 
 
+### .getDefaults()
+  Returns information from tinder about your client, where you can find your user data and also globals e.g:recs_size
+  that allows you to interact where api timeouts and limits.
+
 ### .userId
 
   Once authorized, this property will be set the current profile's tinder user id. 
@@ -104,7 +108,11 @@
       <fb user token>,
       <fb user id>,
       function() {
-        client.getRecommendations(10, function(error, data){
+        
+        var defaults = client.getDefaults()
+        var recs_size = defaults.globals.recs_size;
+        
+        client.getRecommendations(recs_size, function(error, data){
           _.chain(data.results)
             .pluck('_id')
             .each(function(id) {
