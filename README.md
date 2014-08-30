@@ -12,19 +12,20 @@
 
   tinderjs is a simple node.js wrapper around the Tinder API. Below is a simple example which gets a list of nearby profiles and prints them out:
   
-    var tinder = require('tinderjs');
-    var client = new tinder.TinderClient();
-    
-    client.authorize(
-      <fb user token>,
-      <fb user id>,
-      function() {
-        client.getRecommendations(10, function(error, data){
-          console.log(data.results);
-        });
-      });
-    });
+```js
+var tinder = require('tinderjs');
+var client = new tinder.TinderClient();
 
+client.authorize(
+  <fb user token>,
+  <fb user id>,
+  function() {
+    client.getRecommendations(10, function(error, data){
+      console.log(data.results);
+    });
+  });
+});
+```
 
 ## Supported APIs
 
@@ -37,7 +38,8 @@
 * `callback` is called when the request completes 
 
 ### .getDefaults()
-  Returns information from tinder about your client, where you can find your user data and also globals e.g:recs_size
+
+  Returns information from tinder about your client, where you can find your user data and also globals (e.g: `recs_size`)
   that allows you to interact where api timeouts and limits.
 
 ### .userId
@@ -100,31 +102,33 @@
 
   The following example authorizes a client, gets some nearby profiles, likes all of them, and sends a message to any of the ones that match
   
-    var tinder = require('tinderjs');
-    var client = new tinder.TinderClient();
-    var _ = require('underscore')
+```js
+var tinder = require('tinderjs');
+var client = new tinder.TinderClient();
+var _ = require('underscore')
+
+client.authorize(
+  <fb user token>,
+  <fb user id>,
+  function() {
     
-    client.authorize(
-      <fb user token>,
-      <fb user id>,
-      function() {
-        
-        var defaults = client.getDefaults()
-        var recs_size = defaults.globals.recs_size;
-        
-        client.getRecommendations(recs_size, function(error, data){
-          _.chain(data.results)
-            .pluck('_id')
-            .each(function(id) {
-              client.like(id, function(error, data) {
-                if (data.matched) {
-                  client.sendMessage(id, "hey ;)");
-                }
-              });
-            });
+    var defaults = client.getDefaults()
+    var recs_size = defaults.globals.recs_size;
+    
+    client.getRecommendations(recs_size, function(error, data){
+      _.chain(data.results)
+        .pluck('_id')
+        .each(function(id) {
+          client.like(id, function(error, data) {
+            if (data.matched) {
+              client.sendMessage(id, "hey ;)");
+            }
+          });
         });
-      });
     });
+  });
+});
+```
     
 ## License
 
