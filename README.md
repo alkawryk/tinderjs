@@ -97,6 +97,12 @@ client.authorize(
 * `latitude` is the latitude of the new position
 * `callback` is called when the request completes 
 
+### .getUser(user id, callback)
+
+  Get user information by id
+
+* `user id` is the user's id. This is obtained e.g  via `getRecommendations`
+* `callback` is called when the request completes 
 
 ## Examples
 
