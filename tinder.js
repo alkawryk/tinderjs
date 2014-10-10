@@ -234,6 +234,18 @@ function TinderClient() {
       },
       makeTinderCallback(callback));
   };
+  
+  /**
+   * Get user by id
+   * @param {String} userId the id of the user
+   * @param {Function} callback the callback to invoke when the request completes
+   */
+  this.getUser = function(userId, callback){
+  	tinderGet('user/' + userId,
+  	  null,
+  	  makeTinderCallback(callback));
+  };
+  
 }
 
 exports.TinderClient = TinderClient;
