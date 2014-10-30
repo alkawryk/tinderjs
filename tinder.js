@@ -176,6 +176,13 @@ function TinderClient() {
     return xAuthToken != null;
   }
   
+  /**
+   * Returns the xAuthToken
+   * @return xAuthToken
+   */
+  this.getAuthToken = function() {
+    return xAuthToken || null;
+  }
   
   /**
    * Returns client information and globals
