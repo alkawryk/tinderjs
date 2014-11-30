@@ -37,6 +37,14 @@ client.authorize(
 * `fb id` is the id of the facebook user 
 * `callback` is called when the request completes 
 
+### .isAuthorized()
+
+  Returns bool if TinderClient is authorized or not.
+  
+### .getAuthToken()
+
+  Returns xAuthToken from authenticated user. Will be good if you want to save/cache the info.
+
 ### .getDefaults()
 
   Returns information from tinder about your client, where you can find your user data and also globals (e.g: `recs_size`)
