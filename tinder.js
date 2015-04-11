@@ -162,7 +162,7 @@ function TinderClient() {
           _this.userId = body.user._id;
           _this.defaults = body;
           callback(error, res, body);
-        } else if (body.error){
+        } else if (body.error) {
           throw "Failed to authenticate: " + body.error
         }
       });
@@ -194,14 +194,22 @@ function TinderClient() {
 
   /**
    * Gets a list of new updates. This will be things like new messages, people who liked you, etc. 
+   * @param {Date} since (optional) time threshold after which you want updates (defaults to app start or latest updates received, whichever is latest)
    * @param {Function} callback the callback to invoke when the request completes
    */
-  this.getUpdates = function(callback) {
+  this.getUpdates = function(since, callback) {
+    if (typeof since == 'function') {
+      callback = since;
+      since = null;
+    }
+    if (since == null || since instanceof Date) {
+      since = (since || lastActivity).toISOString();
+    }
     tinderPost('updates',
       {
-        last_activity_date: lastActivity.toISOString() 
+        last_activity_date: since
       },
-      makeTinderCallback(function(err, data){
+      makeTinderCallback(function(err, data) {
         lastActivity = new Date(data.last_activity_date);
         
         if (callback) {
@@ -220,11 +228,7 @@ function TinderClient() {
    * @param {Function} callback the callback to invoke when the request completes
    */
   this.getHistory = function(callback) {
-    tinderPost('updates',
-      {
-        last_activity_date: ""
-      },
-      makeTinderCallback(callback));
+    this.getUpdates('', callback);
   };
   
   /**
@@ -247,7 +251,7 @@ function TinderClient() {
    * @param {String} userId the id of the user
    * @param {Function} callback the callback to invoke when the request completes
    */
-  this.getUser = function(userId, callback){
+  this.getUser = function(userId, callback) {
     tinderGet('user/' + userId,
       null,
       makeTinderCallback(callback));

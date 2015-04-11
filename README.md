@@ -83,9 +83,9 @@ client.authorize(
 * `limit` is how many results to limit the search to 
 * `callback` is called when the request completes 
 
-### .getUpdates(callback)
+### .getUpdates(since, callback)
 
-  Checks for updates. The response will show you new messages, new matches, new blocks, etc. 
+  Checks for updates. The response will show you new messages, new matches, new blocks, etc. Passing a `Date` object in the optional `since` parameter limits to updates since then. If null or not present, you will get updates since app start, last `getUpdates` or `getHistory` call by default, whichever is latest.
   
 * `callback` is called when the request completes 
 
