@@ -58,7 +58,7 @@ client.authorize(
 
   Sends a message to a user. 
   
-* `user id` is the user's id. This is obtained e.g via `getRecommendations` 
+* `match id` is the match's id.
 * `message` is the message to send. 
 * `callback` is called when the request completes 
 
