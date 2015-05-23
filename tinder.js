@@ -9,7 +9,7 @@ var request = require('request');
  */
 function TinderClient() {
   var xAuthToken = null;
-  var lastActivity = new Date();
+  this.lastActivity = new Date();
   var _this = this;
   
   /**
@@ -199,10 +199,10 @@ function TinderClient() {
   this.getUpdates = function(callback) {
     tinderPost('updates',
       {
-        last_activity_date: lastActivity.toISOString() 
+        last_activity_date: _this.lastActivity.toISOString() 
       },
       makeTinderCallback(function(err, data){
-        lastActivity = new Date(data.last_activity_date);
+        _this.lastActivity = new Date(data.last_activity_date);
         
         if (callback) {
           callback(err, data);
