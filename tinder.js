@@ -110,12 +110,12 @@ function TinderClient() {
   
   /**
    * Sends a message to a user
-   * @param {String} userId the id of the user
+   * @param {String} matchId the id of the match
    * @param {String} message the message to send
    * @param {Function} callback the callback to invoke when the request completes
    */
-  this.sendMessage = function(userId, message, callback) {
-    tinderPost('user/matches/' + userId,
+  this.sendMessage = function(matchId, message, callback) {
+    tinderPost('user/matches/' + matchId,
       {
         message: message
       },
