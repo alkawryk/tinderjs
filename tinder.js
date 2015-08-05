@@ -241,6 +241,25 @@ function TinderClient() {
       },
       makeTinderCallback(callback));
   };
+
+  /**
+   * Updates the preferences for this user
+   * @param {Number} ageMin the minimum age to show recommendations
+   * @param {Number} ageMax the maximum age to show recommendations
+   * @param {Number} gender the gender to show recommentations (0 = Male, 1 = Female, -1 = Both)
+   * @param {Number} distance the distance in km to show recommendations
+   * @param {Function} callback the callback to invoke when the request completes
+   */
+  this.updateProfile = function(ageMin, ageMax, gender, distance, callback) {
+    tinderPost('profile',
+      {
+        age_filter_min: ageMin,
+        age_filter_max: ageMax,
+        gender_filter: gender,
+        distance_filter: distance
+      },
+      makeTinderCallback(callback));
+  };
   
   /**
    * Get user by id
