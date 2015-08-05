@@ -105,6 +105,16 @@ client.authorize(
 * `latitude` is the latitude of the new position
 * `callback` is called when the request completes 
 
+### .updateProfile(min age, max age, gender, distance, callback)
+
+  Updates your profile's user preferences
+
+* `min age` is the minimum age of incoming recommendations
+* `max age` is the maximum age of incoming recommendations
+* `gender` is the gender of incoming recommendations (0 = Male, 1 = Female, -1 = Both)
+* `distance` is the maximum distance in kilometers of incoming recommendations
+* `callback` is called when the request completes
+
 ### .getUser(user id, callback)
 
   Get user information by id
