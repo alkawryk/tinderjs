@@ -105,10 +105,11 @@ client.authorize(
 * `latitude` is the latitude of the new position
 * `callback` is called when the request completes 
 
-### .updateProfile(min age, max age, gender, distance, callback)
+### .updateProfile(discovery, min age, max age, gender, distance, callback)
 
   Updates your profile's user preferences
 
+* `discovery` is the true/false that tells tinder whether or not to show your card
 * `min age` is the minimum age of incoming recommendations
 * `max age` is the maximum age of incoming recommendations
 * `gender` is the gender of incoming recommendations (0 = Male, 1 = Female, -1 = Both)

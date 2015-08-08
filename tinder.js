@@ -244,15 +244,17 @@ function TinderClient() {
 
   /**
    * Updates the preferences for this user
+   * @param {Boolean} discovery whether or not to show user's card
    * @param {Number} ageMin the minimum age to show recommendations
    * @param {Number} ageMax the maximum age to show recommendations
    * @param {Number} gender the gender to show recommentations (0 = Male, 1 = Female, -1 = Both)
    * @param {Number} distance the distance in km to show recommendations
    * @param {Function} callback the callback to invoke when the request completes
    */
-  this.updateProfile = function(ageMin, ageMax, gender, distance, callback) {
+  this.updateProfile = function(discovery, ageMin, ageMax, gender, distance, callback) {
     tinderPost('profile',
       {
+        discoverable: discovery,
         age_filter_min: ageMin,
         age_filter_max: ageMax,
         gender_filter: gender,
