@@ -115,6 +115,12 @@ client.authorize(
 * `distance` is the maximum distance in kilometers of incoming recommendations
 * `callback` is called when the request completes
 
+### .getProfile(callback)
+  
+  Get *your* user information, plus your preferences
+
+* `callback` is called when the request completes 
+
 ### .getUser(user id, callback)
 
   Get user information by id

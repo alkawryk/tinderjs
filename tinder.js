@@ -262,6 +262,16 @@ function TinderClient() {
   };
   
   /**
+   * Get authenticated user info
+   * @param {Function} callback the callback to invoke when the request completes
+   */
+  this.getProfile = function(callback) {
+    tinderGet('meta',
+      null,
+      makeTinderCallback(callback));
+  };
+  
+  /**
    * Get user by id
    * @param {String} userId the id of the user
    * @param {Function} callback the callback to invoke when the request completes
