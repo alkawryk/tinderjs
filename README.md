@@ -105,7 +105,7 @@ client.authorize(
 * `latitude` is the latitude of the new position
 * `callback` is called when the request completes 
 
-### .updateProfile(discovery, min age, max age, gender, distance, callback)
+### .updatePreferences(discovery, min age, max age, gender, distance, callback)
 
   Updates your profile's user preferences
 

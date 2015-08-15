@@ -251,7 +251,7 @@ function TinderClient() {
    * @param {Number} distance the distance in km to show recommendations
    * @param {Function} callback the callback to invoke when the request completes
    */
-  this.updateProfile = function(discovery, ageMin, ageMax, gender, distance, callback) {
+  this.updatePreferences = function(discovery, ageMin, ageMax, gender, distance, callback) {
     tinderPost('profile',
       {
         discoverable: discovery,
