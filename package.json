@@ -10,6 +10,6 @@
   "author": "alkawryk",
   "license": "MIT",
   "dependencies": {
-    "request" : "2.34.0"
+    "request" : "2.67.0"
   }
 }
