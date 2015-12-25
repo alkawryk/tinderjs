@@ -37,6 +37,14 @@ client.authorize(
 * `fb id` is the id of the facebook user 
 * `callback` is called when the request completes 
 
+### .getAuthToken()
+
+  Get the `xAuthToken`. This token are saved when authorized.
+  
+### .setAuthToken()
+
+  Set the `xAuthToken` manually.
+
 ### .isAuthorized()
 
   Returns bool if TinderClient is authorized or not.
