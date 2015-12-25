@@ -185,6 +185,15 @@ function TinderClient() {
   }
   
   /**
+   * Set the xAuthToken
+   * @return xAuthToken
+   */
+  this.setAuthToken = function(token) {
+    xAuthToken = token;
+    return xAuthToken;
+  }
+  
+  /**
    * Returns client information and globals
    * Globals are used for interacting with tinder api limits
    */

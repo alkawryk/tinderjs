@@ -40,10 +40,14 @@ client.authorize(
 ### .isAuthorized()
 
   Returns bool if TinderClient is authorized or not.
-  
+
 ### .getAuthToken()
 
-  Returns xAuthToken from authenticated user. Will be good if you want to save/cache the info.
+  Get the `xAuthToken`. This token are saved when authorized. Will be good if you want to save/cache the info.
+  
+### .setAuthToken()
+
+  Set the `xAuthToken` manually.
 
 ### .getDefaults()
 
