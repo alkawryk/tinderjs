@@ -1,5 +1,9 @@
-var TINDER_HOST = "https://api.gotinder.com";
 var request = require('request');
+
+var defaultConfig = {
+    apiHost: "https://api.gotinder.com",
+    apiPath: "",
+};
 
 /**
  * Constructs a new instance of the TinderClient class
@@ -7,11 +11,14 @@ var request = require('request');
  * @constructor
  * @this {TinderClient}
  */
-function TinderClient() {
+function TinderClient(config) {
   var xAuthToken = null;
   var lastActivity = new Date();
   var _this = this;
-  
+
+  // TODO: Add polyfill as dependency?
+  var cfg = Object.assign({}, defaultConfig, config);
+
   /**
    * The current profile's user id
    */
@@ -24,7 +31,7 @@ function TinderClient() {
    */
   var getRequestOptions = function(path, data) {
     var options = {
-      url: TINDER_HOST + "/" + path,
+      url: cfg.apiHost + cfg.apiPath + "/" + path,
       json: data
     };
     
