@@ -163,7 +163,7 @@ function TinderClient() {
           _this.defaults = body;
           callback(error, res, body);
         } else if (body.error){
-          throw "Failed to authenticate: " + body.error
+          callback("Failed to authenticate: " + body.error, res, body);
         }
       });
   };
