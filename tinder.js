@@ -162,9 +162,9 @@ function TinderClient() {
           xAuthToken = body.token;
           _this.userId = body.user._id;
           _this.defaults = body;
-          callback(null, body);
+          callback(null, res, body);
         } else {
-          callback(error || true, null);
+          callback(error || true, res, null);
         }
       });
   };
