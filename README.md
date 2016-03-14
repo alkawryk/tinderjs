@@ -13,7 +13,7 @@
   tinderjs is a simple node.js wrapper around the Tinder API. Below is a simple example which gets a list of nearby profiles and prints them out:
   
 ```js
-var tinder = require('tinderjs');
+var tinder = require('tinder');
 var client = new tinder.TinderClient();
 
 client.authorize(
