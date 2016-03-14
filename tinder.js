@@ -157,13 +157,14 @@ function TinderClient() {
         facebook_id: fbId
       },
       function(error, res, body) {
+        var body = body || { 'token': null };
         if (!error && body.token) {
           xAuthToken = body.token;
           _this.userId = body.user._id;
           _this.defaults = body;
-          callback(error, res, body);
-        } else if (body.error){
-          throw "Failed to authenticate: " + body.error
+          callback(null, res, body);
+        } else {
+          callback(error || true, res, null);
         }
       });
   };
