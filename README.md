@@ -5,7 +5,7 @@
   
 ## Installation
 
-    $ npm install tinderjs
+    $ npm install tinder
     
     
 ## Introduction
