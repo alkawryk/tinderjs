@@ -23,7 +23,6 @@ client.authorize(
     client.getRecommendations(10, function(error, data){
       console.log(data.results);
     });
-  });
 });
 ```
 
