@@ -53,11 +53,11 @@ client.authorize(
 
   Once authorized, this property will be set the current profile's tinder user id. 
 
-### .sendMessage(user id, message, callback)
+### .sendMessage(match id, message, callback)
 
   Sends a message to a user. 
   
-* `user id` is the user's id. This is obtained e.g via `getRecommendations` 
+* `match id` is the match id
 * `message` is the message to send. 
 * `callback` is called when the request completes 
 
