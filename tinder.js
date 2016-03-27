@@ -150,6 +150,17 @@ function TinderClient() {
       null,
       makeTinderCallback(callback));
   };
+
+  /**
+   * Superlikes a user
+   * @param {String} userId the id of the user
+   * @param {Function} callback the callback to invoke when the request completes
+   */
+  this.superLike = function(userId, callback) {
+    tinderPost('like/' + userId + '/super',
+      null,
+      makeTinderCallback(callback));
+  };
   
   /**
    * Authorize this tinder client
