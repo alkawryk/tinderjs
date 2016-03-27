@@ -68,6 +68,13 @@ client.authorize(
 * `user id` is the user's id. This is obtained e.g  via `getRecommendations`
 * `callback` is called when the request completes 
 
+### .superLike(user id, callback)
+  
+  Superlikes a user.
+  
+* `user id` is the user's id. This is obtained e.g  via `getRecommendations`
+* `callback` is called when the request completes 
+
 ### .pass(user id, callback)
 
   Pass on a user (swipes left).
