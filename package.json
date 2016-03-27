@@ -1,6 +1,6 @@
 {
   "name": "tinder",
-  "version": "1.0.9",
+  "version": "1.10.0",
   "description": "Programmatically access the Tinder dating service API",
   "main": "tinder.js",
   "scripts": {
@@ -10,6 +10,6 @@
   "author": "alkawryk",
   "license": "MIT",
   "dependencies": {
-    "request" : "2.36.0"
+    "request" : "2.35.0"
   }
 }
