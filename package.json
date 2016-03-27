@@ -1,15 +1,15 @@
 {
-  "name": "tinderjs",
+  "name": "tinder",
   "version": "1.0.9",
   "description": "Programmatically access the Tinder dating service API",
   "main": "tinder.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": "git://github.com/alkawryk/tinderjs",
+  "repository": "git://github.com/tinderjs/tinderjs",
   "author": "alkawryk",
   "license": "MIT",
   "dependencies": {
-    "request" : "2.35.0"
+    "request" : "2.36.0"
   }
 }
