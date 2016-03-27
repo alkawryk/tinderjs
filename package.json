@@ -1,6 +1,6 @@
 {
   "name": "tinder",
-  "version": "1.10.0",
+  "version": "1.11.0",
   "description": "Programmatically access the Tinder dating service API",
   "main": "tinder.js",
   "scripts": {

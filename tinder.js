@@ -172,10 +172,15 @@ function TinderClient() {
     tinderPost('auth',
       {
         facebook_token: fbToken,
-        // facebook_id: fbId // doesn't seem like we need the fbId now
+        // facebook_id: fbId, // doesn't seem like we need the fbId now
         locale: 'en'
       },
       function(error, res, body) {
+        // If no body is passed back, return an error
+        if(body === undefined){
+          error = new Error('No token passed back from Tinder')
+        }
+        
         var body = body || { 'token': null };
         if (!error && body.token) {
           xAuthToken = body.token;
@@ -185,7 +190,10 @@ function TinderClient() {
           callback = makeTinderCallback(callback);
           callback(error, res, body);
         } else if (body.error){
-          throw "Failed to authenticate: " + body.error
+          error = "Failed to authenticate: " + body.error
+          callback(error, res, body);
+        } else {
+          callback(error, res, body);
         }
       });
   };
