@@ -1,4 +1,4 @@
-var TINDER_HOST = "https://api.gotinder.com";
+var TINDER_HOST = "https://api.gotinder.com/";
 var request = require('request');
 
 /**
@@ -9,7 +9,7 @@ var request = require('request');
  */
 function TinderClient() {
   var xAuthToken = null;
-  var lastActivity = new Date();
+  this.lastActivity = new Date();
   var _this = this;
   
   /**
@@ -24,13 +24,16 @@ function TinderClient() {
    */
   var getRequestOptions = function(path, data) {
     var options = {
-      url: TINDER_HOST + "/" + path,
+      url: TINDER_HOST + path,
       json: data
     };
     
     var headers = {
-        'User-Agent' : 'Tinder Android Version 2.2.3',
-        'os_version' : '16'
+        'User-Agent'      : 'Tinder Android Version 4.1.4',
+        'os_version'      : '21',
+        'platform'        : 'android',
+        'app-version'     : '809',
+        'Accept-Language' : 'en'
     };
   
     if (xAuthToken) {
@@ -71,7 +74,7 @@ function TinderClient() {
    * @param {Function} callback the callback 
    */
   var makeTinderCallback = function(callback) {
-    return function(error, res, body) {   
+    return function(error, res, body) {
       var data = null;
       
       if (!error) {
@@ -87,6 +90,10 @@ function TinderClient() {
         else if (typeof body === "object") {
           data = body;
         }
+      }
+
+      if (data && data.status && data.status !== 200) {
+        error = data;
       }
       
       if (callback) {
@@ -110,12 +117,12 @@ function TinderClient() {
   
   /**
    * Sends a message to a user
-   * @param {String} userId the id of the user
+   * @param {String} matchId the id of the match
    * @param {String} message the message to send
    * @param {Function} callback the callback to invoke when the request completes
    */
-  this.sendMessage = function(userId, message, callback) {
-    tinderPost('user/matches/' + userId,
+  this.sendMessage = function(matchId, message, callback) {
+    tinderPost('user/matches/' + matchId,
       {
         message: message
       },
@@ -154,7 +161,8 @@ function TinderClient() {
     tinderPost('auth',
       {
         facebook_token: fbToken,
-        facebook_id: fbId
+        // facebook_id: fbId // doesn't seem like we need the fbId now
+        locale: 'en'
       },
       function(error, res, body) {
         var body = body || { 'token': null };
@@ -162,11 +170,24 @@ function TinderClient() {
           xAuthToken = body.token;
           _this.userId = body.user._id;
           _this.defaults = body;
-          callback(null, res, body);
-        } else {
-          callback(error || true, res, null);
+
+          callback = makeTinderCallback(callback);
+          callback(error, res, body);
+        } else if (body.error){
+          throw "Failed to authenticate: " + body.error
         }
       });
+  };
+
+  /**
+   * Set auth token if you have it saved, no need to do fb login every time
+   */
+  this.setAuthToken = function(token) {
+    xAuthToken = token;
+  };
+
+  this.getAuthToken = function() {
+    return xAuthToken;
   };
   
   /**
@@ -200,10 +221,12 @@ function TinderClient() {
   this.getUpdates = function(callback) {
     tinderPost('updates',
       {
-        last_activity_date: lastActivity.toISOString() 
+        last_activity_date: _this.lastActivity.toISOString() 
       },
       makeTinderCallback(function(err, data){
-        lastActivity = new Date(data.last_activity_date);
+        if (data && data.last_activity_date) {
+          _this.lastActivity = new Date(data.last_activity_date);
+        }
         
         if (callback) {
           callback(err, data);
