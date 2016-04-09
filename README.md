@@ -5,7 +5,7 @@
   
 ## Installation
 
-    $ npm install tinderjs
+    $ npm install tinder
     
     
 ## Introduction
@@ -13,7 +13,7 @@
   tinderjs is a simple node.js wrapper around the Tinder API. Below is a simple example which gets a list of nearby profiles and prints them out:
   
 ```js
-var tinder = require('tinderjs');
+var tinder = require('tinder');
 var client = new tinder.TinderClient();
 
 client.authorize(
@@ -22,7 +22,6 @@ client.authorize(
   function() {
     client.getRecommendations(10, function(error, data){
       console.log(data.results);
-    });
   });
 });
 ```
@@ -54,17 +53,24 @@ client.authorize(
 
   Once authorized, this property will be set the current profile's tinder user id. 
 
-### .sendMessage(user id, message, callback)
+### .sendMessage(match id, message, callback)
 
   Sends a message to a user. 
   
-* `user id` is the user's id. This is obtained e.g via `getRecommendations` 
+* `match id` is the match id
 * `message` is the message to send. 
 * `callback` is called when the request completes 
 
 ### .like(user id, callback)
   
   Likes a user (swipes right).
+  
+* `user id` is the user's id. This is obtained e.g  via `getRecommendations`
+* `callback` is called when the request completes 
+
+### .superLike(user id, callback)
+  
+  Superlikes a user.
   
 * `user id` is the user's id. This is obtained e.g  via `getRecommendations`
 * `callback` is called when the request completes 
@@ -103,6 +109,23 @@ client.authorize(
 
 * `longitude` is the longitude of the new position
 * `latitude` is the latitude of the new position
+* `callback` is called when the request completes 
+
+### .updatePreferences(discovery, min age, max age, gender, distance, callback)
+
+  Updates your profile's user preferences
+
+* `discovery` is the true/false that tells tinder whether or not to show your card
+* `min age` is the minimum age of incoming recommendations
+* `max age` is the maximum age of incoming recommendations
+* `gender` is the gender of incoming recommendations (0 = Male, 1 = Female, -1 = Both)
+* `distance` is the maximum distance in kilometers of incoming recommendations
+* `callback` is called when the request completes
+
+### .getProfile(callback)
+  
+  Get *your* user information, plus your preferences
+
 * `callback` is called when the request completes 
 
 ### .getUser(user id, callback)
