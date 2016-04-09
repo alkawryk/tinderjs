@@ -103,66 +103,6 @@ function TinderClient() {
   };
 
   /**
-   * Gets a list of nearby users
-   * @param {Number} limit the maximum number of profiles to fetch
-   * @param {Function} callback the callback to invoke when the request completes
-   */
-  this.getRecommendations = function(limit, callback) {
-    tinderGet('user/recs', 
-      {
-        limit: limit
-      },
-      makeTinderCallback(callback));
-  };
-  
-  /**
-   * Sends a message to a user
-   * @param {String} matchId the id of the match
-   * @param {String} message the message to send
-   * @param {Function} callback the callback to invoke when the request completes
-   */
-  this.sendMessage = function(matchId, message, callback) {
-    tinderPost('user/matches/' + matchId,
-      {
-        message: message
-      },
-      makeTinderCallback(callback));
-  };
-  
-  /**
-   * Passes (swipes left) on a user
-   * @param {String} userId the id of the user
-   * @param {Function} callback the callback to invoke when the request completes
-   */
-  this.pass = function(userId, callback) {
-    tinderGet('pass/' + userId,
-      null,
-      makeTinderCallback(callback));
-  };
-  
-  /**
-   * Likes (swipes right) on a user
-   * @param {String} userId the id of the user
-   * @param {Function} callback the callback to invoke when the request completes
-   */
-  this.like = function(userId, callback) {
-    tinderGet('like/' + userId,
-      null,
-      makeTinderCallback(callback));
-  };
-
-  /**
-   * Superlikes a user
-   * @param {String} userId the id of the user
-   * @param {Function} callback the callback to invoke when the request completes
-   */
-  this.superLike = function(userId, callback) {
-    tinderPost('like/' + userId + '/super',
-      null,
-      makeTinderCallback(callback));
-  };
-  
-  /**
    * Authorize this tinder client
    * @param {String} fbToken the Facebook token. This will be obtained when authenticating the user
    * @param {String} fbId the Facebook user id. 
@@ -232,6 +172,66 @@ function TinderClient() {
   this.getDefaults = function() {
     return _this.defaults;
   }
+  
+  /**
+   * Gets a list of nearby users
+   * @param {Number} limit the maximum number of profiles to fetch
+   * @param {Function} callback the callback to invoke when the request completes
+   */
+  this.getRecommendations = function(limit, callback) {
+    tinderGet('user/recs', 
+      {
+        limit: limit
+      },
+      makeTinderCallback(callback));
+  };
+  
+  /**
+   * Sends a message to a user
+   * @param {String} matchId the id of the match
+   * @param {String} message the message to send
+   * @param {Function} callback the callback to invoke when the request completes
+   */
+  this.sendMessage = function(matchId, message, callback) {
+    tinderPost('user/matches/' + matchId,
+      {
+        message: message
+      },
+      makeTinderCallback(callback));
+  };
+  
+  /**
+   * Passes (swipes left) on a user
+   * @param {String} userId the id of the user
+   * @param {Function} callback the callback to invoke when the request completes
+   */
+  this.pass = function(userId, callback) {
+    tinderGet('pass/' + userId,
+      null,
+      makeTinderCallback(callback));
+  };
+  
+  /**
+   * Likes (swipes right) on a user
+   * @param {String} userId the id of the user
+   * @param {Function} callback the callback to invoke when the request completes
+   */
+  this.like = function(userId, callback) {
+    tinderGet('like/' + userId,
+      null,
+      makeTinderCallback(callback));
+  };
+
+  /**
+   * Superlikes a user
+   * @param {String} userId the id of the user
+   * @param {Function} callback the callback to invoke when the request completes
+   */
+  this.superLike = function(userId, callback) {
+    tinderPost('like/' + userId + '/super',
+      null,
+      makeTinderCallback(callback));
+  };
 
   /**
    * Gets a list of new updates. This will be things like new messages, users who liked you, etc. 
