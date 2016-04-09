@@ -169,7 +169,7 @@ function TinderClient() {
    * Returns client information and globals
    * Globals are used for interacting with tinder api limits
    */
-  this.getDefaults = function() {
+  this.getDefaults = function() {
     return _this.defaults;
   }
   
@@ -310,7 +310,7 @@ function TinderClient() {
    * Gets the current account info
    * @param {Function} callback the callback to invoke when the request completes
    */
-  this.getProfile = function(callback) {
+  this.getAccount = function(callback) {
     tinderGet('meta',
       null,
       makeTinderCallback(callback));
@@ -325,6 +325,16 @@ function TinderClient() {
     tinderGet('user/' + userId,
       null,
       makeTinderCallback(callback));
+  };
+
+  /**
+   * @deprecated since version 2.0.0
+   * Get authenticated user info
+   * @param {Function} callback the callback to invoke when the request completes
+   */
+  this.getProfile = function(callback) {
+    console.log('This function is deprecated. Use getAccount(callback) instead.');
+    return getAccount(callback);
   };
   
 }
