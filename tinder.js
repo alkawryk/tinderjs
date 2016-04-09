@@ -13,7 +13,7 @@ function TinderClient() {
   var _this = this;
   
   /**
-   * The current profile's user id
+   * The current account's user id
    */
   this.userId = null;
   
@@ -46,7 +46,7 @@ function TinderClient() {
   };
 
   /**
-   * Issues a GET request to the tinder API
+   * Issues a GET request to the Tinder API
    * @param {String} path the relative path
    * @param {Object} data an object containing extra values 
    * @param {Function} callback the callback to invoke when the request completes 
@@ -58,7 +58,7 @@ function TinderClient() {
   };
 
   /**
-   * Issues a POST request to the tinder API
+   * Issues a POST request to the Tinder API
    * @param {String} path the relative path
    * @param {Object} data an object containing extra values
    * @param {Function} callback the callback to invoke when the request completes
@@ -103,7 +103,7 @@ function TinderClient() {
   };
 
   /**
-   * Gets a list of profiles nearby
+   * Gets a list of nearby users
    * @param {Number} limit the maximum number of profiles to fetch
    * @param {Function} callback the callback to invoke when the request completes
    */
@@ -130,7 +130,7 @@ function TinderClient() {
   };
   
   /**
-   * Swipes left for a user
+   * Passes (swipes left) on a user
    * @param {String} userId the id of the user
    * @param {Function} callback the callback to invoke when the request completes
    */
@@ -141,7 +141,7 @@ function TinderClient() {
   };
   
   /**
-   * Swipes right for a user
+   * Likes (swipes right) on a user
    * @param {String} userId the id of the user
    * @param {Function} callback the callback to invoke when the request completes
    */
@@ -234,7 +234,7 @@ function TinderClient() {
   }
 
   /**
-   * Gets a list of new updates. This will be things like new messages, people who liked you, etc. 
+   * Gets a list of new updates. This will be things like new messages, users who liked you, etc. 
    * @param {Function} callback the callback to invoke when the request completes
    */
   this.getUpdates = function(callback) {
@@ -254,7 +254,7 @@ function TinderClient() {
   };
   
   /**
-   * Gets the entire history for the user (all matches, messages, blocks, etc.)
+   * Gets the entire history for the current account (all matches, messages, blocks, etc.)
    * 
    * NOTE: Old messages seem to not be returned after a certain threshold. Not yet
    * sure what exactly that timeout is. The official client seems to get this update
@@ -271,7 +271,7 @@ function TinderClient() {
   };
   
   /**
-   * Updates the position for this user 
+   * Updates the geographical position for the current account 
    * @param {Number} lon the longitude
    * @param {Number} lat the latitutde
    * @param {Function} callback the callback to invoke when the request completes
@@ -286,7 +286,7 @@ function TinderClient() {
   };
 
   /**
-   * Updates the preferences for this user
+   * Updates the preferences for the current account
    * @param {Boolean} discovery whether or not to show user's card
    * @param {Number} ageMin the minimum age to show recommendations
    * @param {Number} ageMax the maximum age to show recommendations
@@ -307,7 +307,7 @@ function TinderClient() {
   };
   
   /**
-   * Get authenticated user info
+   * Gets the current account info
    * @param {Function} callback the callback to invoke when the request completes
    */
   this.getProfile = function(callback) {
@@ -317,7 +317,7 @@ function TinderClient() {
   };
   
   /**
-   * Get user by id
+   * Gets a user by id
    * @param {String} userId the id of the user
    * @param {Function} callback the callback to invoke when the request completes
    */
