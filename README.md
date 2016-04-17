@@ -24,7 +24,6 @@ client.authorize(
       console.log(data.results);
     });
   });
-});
 ```
 
 ## Supported APIs
